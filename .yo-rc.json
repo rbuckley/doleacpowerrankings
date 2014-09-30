@@ -21,11 +21,15 @@
     "modules": [
       {
         "name": "powerRankings",
-        "file": "power-rankings\\power-rankings.js"
+        "file": "power-rankings/power-rankings.js"
       },
       {
         "name": "home",
-        "file": "home\\home.js"
+        "file": "home/home.js"
+      },
+      {
+        "name": "cbssportsApi",
+        "file": "cbssports-api\\cbssports-api.js"
       }
     ]
   }

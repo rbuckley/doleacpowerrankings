@@ -1,4 +1,4 @@
-angular.module('DoleacPowerRankings', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'powerRankings', 'home']);
+angular.module('DoleacPowerRankings', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'powerRankings', 'home', 'cbssportsApi']);
 
 angular.module('DoleacPowerRankings').config(function($stateProvider, $urlRouterProvider) {
          
