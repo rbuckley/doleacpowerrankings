@@ -1,0 +1,7 @@
+<div class="col-md-12" ng-controller="PowerRankingsCtrl">
+   <div id="sortable-owners" sortable="sortableOptions" ng-model='owners'>
+      <div ng-repeat="owner in owners" sortable-item>
+         <div sortable-item-handle>{{owner.Name}}</div>
+      </div>
+   </div>
+</div>

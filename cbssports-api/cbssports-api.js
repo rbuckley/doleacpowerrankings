@@ -1,8 +1,18 @@
-angular.module('cbssportsApi', ['ui.bootstrap','ui.utils','ui.router','ngAnimate']);
+angular.module('CBSSportsAPI', ['ngResource']);
 
-angular.module('cbssportsApi').config(function($stateProvider) {
+angular.module('CBSSportsAPI').factory('cbsAPI', ['$resource', 
+   function($resource) {
 
-    /* Add New States Above */
+      var basePath = 'http://api.cbssports.com/fantasy/';
+      var apiVers = '3.0';
 
-});
+      var cbssportsApi = {};
 
+      var _test = function() {
+         return "hello api";
+      };
+
+      cbssportsApi.test = _test;
+
+      return cbssportsApi;
+}]);
