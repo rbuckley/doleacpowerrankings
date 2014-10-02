@@ -14,8 +14,9 @@ angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', 'cbsA
 
       var test = cbsAPI.test();
       console.log(test);
-      $scope.owners = cbsAPI.getOwners().get();
+      var owners = cbsAPI.getOwners();
 
+      owners.get();
       $scope.sortableOptions = {
          containment: '#sortable-owners',
          accept: function (sourceItemHandleScope, destSortableScope) {

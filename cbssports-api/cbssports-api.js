@@ -33,11 +33,7 @@ angular.module('CBSSportsAPI').factory('cbsAPI', ['$resource', '$location', '$st
          };
 
          var _getOwners = function() {
-            return $resource(basePath + 'league/teams?access_token=' + cbssportsTokens['access_token'] + '/', {}, {
-               get: {
-                  headers: { 'Access-Control-Allow-Origin' : '*' }
-               }
-            });
+            return $resource(basePath + 'league/owners?access_token=' + cbssportsTokens['access_token'] + '&response_format=JSON');
          };
 
          cbssportsApi.test = _test;
