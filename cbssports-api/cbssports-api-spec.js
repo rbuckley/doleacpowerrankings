@@ -1,11 +1,10 @@
-describe('cbssportsApi', function() {
+describe('cbsAPI', function() {
 
   beforeEach(module('DoleacPowerRankings'));
-
-  it('should ...', inject(function(cbssportsApi) {
-
-	//expect(cbssportsApi.doSomething()).toEqual('something');
-
+   
+  it('should contain a cbsAPI service',
+     inject(function(cbsAPI) {
+        expect(cbsAPI).no.to.equal(null);
   }));
 
 });

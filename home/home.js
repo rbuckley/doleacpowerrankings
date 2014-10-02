@@ -10,3 +10,7 @@ angular.module('home').config(function($stateProvider) {
 
 });
 
+angular.module('home').controller('HomeCtrl', ['$scope', function($scope) {
+      $scope.test="Home Page Time";
+}]);
+
