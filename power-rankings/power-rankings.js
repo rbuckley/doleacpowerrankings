@@ -10,13 +10,31 @@ angular.module('powerRankings').config(function($stateProvider, $locationProvide
 
 });
 
-angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', 'cbsAPI', function($scope, cbsAPI) {
+angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$window', 'cbsAPI', function($scope, $window, cbsAPI) {
 
-      var test = cbsAPI.test();
-      console.log(test);
-      var owners = cbsAPI.getOwners();
+      $scope.isLoading = true;
 
-      owners.get();
+      cbsAPI.getOwnersJSONP().getOwners().$promise.then(
+         function( owners ) {
+            $scope.owners = owners.body.owners;
+            $scope.isLoading = false;
+         },
+         function( error ) {
+            $window.alert("oh no");
+         }
+      );
+
+      cbsAPI.getOwnersRes().get().$promise.then(
+         function( owners ) {
+            console.log(owners);
+         },
+         function (error) {
+            $window.alert("nuts" + error);
+            console.dir(error.config.headers);
+         }
+      );
+
+
       $scope.sortableOptions = {
          containment: '#sortable-owners',
          accept: function (sourceItemHandleScope, destSortableScope) {
