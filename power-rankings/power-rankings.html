@@ -2,7 +2,7 @@
    <div ng-if='!isLoading'>
       <div id="sortable-owners" sortable="sortableOptions" ng-model='owners'>
          <div ng-repeat="owner in owners" sortable-item>
-            <div sortable-item-handle>{{owner.name}}</div>
+            {{$index+1}} <span class=pr-owner sortable-item-handle>{{owner.name}} {{owner.teamname}}</span>
          </div>
       </div>
    </div>

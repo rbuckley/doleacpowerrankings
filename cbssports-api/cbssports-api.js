@@ -6,7 +6,6 @@ angular.module('CBSSportsAPI').config(['$httpProvider', '$resourceProvider', fun
       $httpProvider.defaults.headers.common['Content-Type'] = 'application/application-json';
       $httpProvider.defaults.useXDomain = true;
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
 }]);
 
 function parseCBSSportsURL(url) {
@@ -38,54 +37,32 @@ angular.module('CBSSportsAPI').factory('cbsAPI', ['$resource', '$location', '$ht
             return "hello api";
          };
 
-         var _getOwnersRes = function() {
-            return $resource(basePath + 'league/owners', 
-               {
-                  access_token: cbssportsTokens['access_token'],
-                  response_format: 'JSON'
-               },
-               {
-                  response_type: 'json'
-               }
-            );
-         };
-
-         var _getOwnersJSONP = function() {
-            return $resource(basePath + 'league/owners',
+         var _get = function(url) {
+            return $resource(basePath + url,
                {
                   access_token: cbssportsTokens['access_token'],
                   response_format: 'JSON',
                   callback: "JSON_CALLBACK"
                },
                {
-                  getOwners: {
+                  get: {
                      method: 'JSONP'
                   }
                }
             );
          };
 
-         var _getOwnersHttp = function() {
-              return $http({
-                     url: basePath + 'league/owners',  
-                     method: "GET",
-                     params: {
-                        'access_token': cbssportsTokens['access_token'],
-                        'response_format': 'JSON'
-                     }
-               }).
-               success(function(data) {
-                  console.log("YAY");
-                  return data;
-               }).error(function(reason) {
-                  console.log("BOOOO" + reason);
-               });
+         var _getOwners = function() {
+            return _get('league/owners');
+         };
+
+         var _getStandings = function() {
+            return _get('league/standings/overall');
          };
 
          cbssportsApi.test = _test;
-         cbssportsApi.getOwnersJSONP = _getOwnersJSONP;
-         cbssportsApi.getOwnersHttp = _getOwnersHttp;
-         cbssportsApi.getOwnersRes = _getOwnersRes;
+         cbssportsApi.getOwners = _getOwners;
+         cbssportsApi.getStandings = _getStandings;
 
          return cbssportsApi;
 }]);
