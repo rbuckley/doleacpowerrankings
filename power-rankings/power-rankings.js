@@ -11,7 +11,8 @@ angular.module('powerRankings').config(function($stateProvider, $locationProvide
 
 });
 
-angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$window', 'cbsAPI', function($scope, $window, cbsAPI) {
+angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$filter', '$window', 'cbsAPI', function($scope, $filter, $window, cbsAPI) {
+
    function shuffle(array) {
       var currentIndex = array.length, temporaryValue, randomIndex ;
 
@@ -31,46 +32,28 @@ angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$win
       destination = value;
    }
 
+   var orderBy = $filter('orderBy');
+
    // make sure we dont try to fill out the html before we have data
    $scope.isLoading = true;
    var loc_owners = [];
    var cbs_owners = {};
    $scope.owners = {};
 
-   cbsAPI.getOwners().get().$promise.then(
-      function( owners ) {
-      cbs_owners = shuffle(owners.body.owners);
+   loc_owners = shuffle(cbsAPI.getOwners());
 
-      var i = 0;
-      // first loop over the owner data and pull what we want
-      for (var owner in cbs_owners) {
-         if (cbs_owners.hasOwnProperty(owner)) {
-            loc_owners[i] = {};
-            loc_owners[i].name = cbs_owners[owner].name;
-            loc_owners[i].id = cbs_owners[owner].id;
-            loc_owners[i].logo = cbs_owners[owner].team.logo;
-            loc_owners[i].divID = cbs_owners[owner].team.division;
-            loc_owners[i++].team = cbs_owners[owner].team.name;
-         }
-      }
+   $scope.isLoading = false;
 
-      // then loop over the owners and pull more data via api calls
-      cbsAPI.getStandings().get().$promise.then(
-         function(standings) {
-         console.dir(standings);
-         for (i = 0; i < loc_owners.length; i++) {
-         }
-         $scope.isLoading = false;
+   $scope.order = function(predicate, reverse) {
+      $scope.owners = orderBy($scope.owners, predicate, reverse);
+   };
 
-
-         console.dir(loc_owners);
-         $scope.owners = loc_owners;
-         $scope.isLoading = false;
-      });
-   },
-   function( error ) {
-      $window.alert("oh no");
-   });
+   $scope.submitRankings = function() {
+      console.log("push this to the DB time");
+   };
+   console.dir(loc_owners);
+   $scope.owners = loc_owners;
+   $scope.isLoading = false;
 
 
    $scope.sortableOptions = {

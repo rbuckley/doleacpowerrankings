@@ -23,8 +23,8 @@ function parseCBSSportsURL(url) {
    return tokens;
 }
 
-angular.module('CBSSportsAPI').factory('cbsAPI', ['$resource', '$location', '$http', 
-      function($resource, $location, $http) {
+angular.module('CBSSportsAPI').factory('cbsAPI', ['$resource', '$location', '$log', '$q', 
+      function($resource, $location, $log, $q) {
 
          var basePath = 'http://api.cbssports.com/fantasy/';
          var apiVers = '3.0';
@@ -44,16 +44,35 @@ angular.module('CBSSportsAPI').factory('cbsAPI', ['$resource', '$location', '$ht
                   response_format: 'JSON',
                   callback: "JSON_CALLBACK"
                },
-               {
-                  get: {
-                     method: 'JSONP'
-                  }
+            {
+               get: {
+                  method: 'JSONP'
                }
+            }
             );
          };
 
          var _getOwners = function() {
-            return _get('league/owners');
+            var deferred = $q.defer();
+            var cbs_owners = {};
+            var loc_owners = [];
+
+            var aGet = _get('league/owners');
+            aGet.get().$promise.then(function(data) {
+               var i = 0;
+               for (var owner in cbs_owners) {
+                  if (cbs_owners.hasOwnProperty(owner)) {
+                     loc_owners[i] = {};
+                     loc_owners[i].name = cbs_owners[owner].name;
+                     loc_owners[i].id = cbs_owners[owner].id;
+                     loc_owners[i].logo = cbs_owners[owner].team.logo;
+                     loc_owners[i].divID = cbs_owners[owner].team.division;
+                     loc_owners[i++].team = cbs_owners[owner].team.name;
+                  }
+               }
+               return loc_owners;
+            });
+            return deferred.promise;
          };
 
          var _getStandings = function() {
