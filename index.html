@@ -29,9 +29,12 @@
 
   <!-- Main App JS -->
   <script src="app.js"></script>
+  <script src="power-rankings/power-rankings.module.js"></script>
+  <script src="power-rankings/service/powerRankingData.js"></script>
   <script src="power-rankings/power-rankings.js"></script>
   <script src="home/home.js"></script>
-  <script src="cbssports-api/cbssports-api.js"></script>
+  <script src="cbssports-api/cbssports-api.module.js"></script>
+  <script src="cbssports-api/cbssports-api.service.js"></script>
   <!-- Add New Component JS Above -->
 
   <!-- NAVIGATION -->
@@ -46,12 +49,7 @@
   </nav>
 
 
-  <div id="content" class="container">
-    <div class="row">
-      <div ui-view>
-      </div>
-    </div>
-  </div>
+   <div ui-view></div>
 
 </body>
 </html>

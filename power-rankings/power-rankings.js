@@ -1,60 +1,58 @@
+(function() {
+'use strict';
 
-angular.module('powerRankings', ['ui.bootstrap','ui.utils','ui.router','ngAnimate', 'ui.sortable', 'CBSSportsAPI' ]);
+angular.module('powerRankings').controller('PowerRankingsCtrl', PowerRankingsCtrl);
 
-angular.module('powerRankings').config(function($stateProvider, $locationProvider) {
+PowerRankingsCtrl.$inject= ['$filter', '$window', 'cbsAPI', 'powerRankingData'];
 
-   $stateProvider.state('power-rankings', {
-      url: '/powerrankings',
-      templateUrl: 'power-rankings/power-rankings.html'
-   });
-   /* Add New States Above */
+function shuffle(array) {
+   var currentIndex = array.length, temporaryValue, randomIndex ;
 
-});
-
-angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$filter', '$window', 'cbsAPI', function($scope, $filter, $window, cbsAPI) {
-   function shuffle(array) {
-      var currentIndex = array.length, temporaryValue, randomIndex ;
-
-      while (0 !== currentIndex) {
-         // Pick a remaining element...
-         randomIndex = Math.floor(Math.random() * currentIndex);
-         currentIndex -= 1;
-         // And swap it with the current element.
-         temporaryValue = array[currentIndex];
-         array[currentIndex] = array[randomIndex];
-         array[randomIndex] = temporaryValue;
-      }
-      return array;
+   while (0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
    }
+   return array;
+}
 
-   function fill(destination, value) {
-      destination = value;
-   }
+function PowerRankingsCtrl($filter, $window, cbsAPI, powerRankingData) {
+   var vm = this;
 
-   var orderBy = $filter('orderBy');
-
-   // make sure we dont try to fill out the html before we have data
-   $scope.isLoading = true;
-   var loc_owners = [];
-   var cbs_owners = {};
-   $scope.owners = {};
+   vm.isLoading = true;
+   vm.order = order;
+   vm.owners = {};
+   vm.sortableOptions = {};
+   vm.submitRankings = submitRankings;
 
    cbsAPI.getPowerRankInfo().then(function(data) {
-      $scope.owners = shuffle(data);
-      $scope.isLoading = false;
+      vm.owners = shuffle(data.owners);
+      vm.isLoading = false;
    });
 
-   $scope.order = function(predicate, reverse) {
-      $scope.owners = orderBy($scope.owners, predicate, reverse);
-   };
+   vm.sortableOptions.containment = '#sortable-owners';
 
-   $scope.submitRankings = function() {
-      console.log("push this to the DB time");
-   };
+   function order(predicate, reverse) {
+      var orderBy = $filter('orderBy');
+      vm.owners = orderBy(vm.owners, predicate, reverse);
+   }
 
-
-   $scope.sortableOptions = {
-      containment: '#sortable-owners'
-   };
-}]);
-
+   /* this will eventually be another service provided by a factory*/
+   function submitRankings() {
+      var ranking = [];
+      var rankingModel = {};
+      angular.forEach(vm.owners, function(value, key) {
+         ranking.push(value.id);
+      });
+      rankingModel.rank = ranking;
+      rankingModel.user_id = cbsAPI.getUserId();
+      rankingModel.league_id = cbsAPI.getLeagueId();
+      rankingModel.currentPer = vm.owners.currentPeriod;
+      powerRankingData.submitRankings(rankingModel);            
+   }
+}
+})();

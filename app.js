@@ -1,11 +1,19 @@
-angular.module('DoleacPowerRankings', ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'powerRankings', 'home', 'CBSSportsAPI']);
+(function() {
+'use strict';
 
-angular.module('DoleacPowerRankings').config(function($stateProvider, $urlRouterProvider) {
+angular.module('DoleacPowerRankings', 
+   ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'powerRankings', 'home', 'CBSSportsAPI']);
+
+angular.module('DoleacPowerRankings').config(DoleacConfig);
+
+angular.module('DoleacPowerRankings').run(['$rootScope', 'cbsAPI', DoleacRun]);
+
+function DoleacConfig($stateProvider, $urlRouterProvider) {
    /* Add New States Above */
    $urlRouterProvider.otherwise('/');
-});
+}
 
-angular.module('DoleacPowerRankings').run(['$rootScope', 'cbsAPI', function($rootScope, cbsAPI) {
+function DoleacRun($rootScope, cbsAPI) {
 
    cbsAPI.getLeagueInfo();
    $rootScope.safeApply = function(fn) {
@@ -18,5 +26,6 @@ angular.module('DoleacPowerRankings').run(['$rootScope', 'cbsAPI', function($roo
          this.$apply(fn);
       }
    };
-}]);
+}
 
+})();
