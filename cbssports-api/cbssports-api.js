@@ -108,17 +108,34 @@ angular.module('CBSSportsAPI').factory('cbsAPI', ['$resource', '$location', '$lo
          var owners = result[1];
          var standings = result[2];
          var divisions = standings.divisions;
-         for (var div = 0; div < divisions.length; div++) {
-            for (var owner = 0; owner < owners.length; owner++) {
-               if (owners[owner].divID === divisions[div].id) {
-                  var teams = divisions[div].teams;
-                  for (var team = 0; team < teams.length; team++) {
-                     if (teams[team].id === owners[owner].teamID) {
-                        owners[owner].wins = teams[team].wins;
-                        owners[owner].losses = teams[team].losses;
-                        owners[owner].ties = teams[team].ties;
-                        owners[owner].points_scored = teams[team].points_scored;
-                        owners[owner].points_against = teams[team].points_against;
+         var owner, team;
+         var teams = [];
+         if (!divisions) {
+            for (owner = 0; owner < owners.length; owner++) {
+               teams = standings.teams;
+               for (team = 0; team < teams.length; team++) {
+                  if (teams[team].id === owners[owner].teamID) {
+                     owners[owner].wins = teams[team].wins;
+                     owners[owner].losses = teams[team].losses;
+                     owners[owner].ties = teams[team].ties;
+                     owners[owner].points_scored = teams[team].points_scored;
+                     owners[owner].points_against = teams[team].points_against;
+                  }
+               }
+            }
+         } else {
+            for (var div = 0; div < divisions.length; div++) {
+               for (owner = 0; owner < owners.length; owner++) {
+                  if (owners[owner].divID === divisions[div].id) {
+                     teams = divisions[div].teams;
+                     for (team = 0; team < teams.length; team++) {
+                        if (teams[team].id === owners[owner].teamID) {
+                           owners[owner].wins = teams[team].wins;
+                           owners[owner].losses = teams[team].losses;
+                           owners[owner].ties = teams[team].ties;
+                           owners[owner].points_scored = teams[team].points_scored;
+                           owners[owner].points_against = teams[team].points_against;
+                        }
                      }
                   }
                }
@@ -126,7 +143,7 @@ angular.module('CBSSportsAPI').factory('cbsAPI', ['$resource', '$location', '$lo
          }
          deferred.resolve(owners);
       });
-            
+
       return deferred.promise;
    };
 
