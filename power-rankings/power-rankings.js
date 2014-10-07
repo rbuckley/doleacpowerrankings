@@ -12,7 +12,6 @@ angular.module('powerRankings').config(function($stateProvider, $locationProvide
 });
 
 angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$filter', '$window', 'cbsAPI', function($scope, $filter, $window, cbsAPI) {
-
    function shuffle(array) {
       var currentIndex = array.length, temporaryValue, randomIndex ;
 
@@ -40,9 +39,14 @@ angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$fil
    var cbs_owners = {};
    $scope.owners = {};
 
-   loc_owners = shuffle(cbsAPI.getOwners());
+   cbsAPI.getPowerRankInfo().then(function(data) {
+      loc_owners = data;
+      console.log(loc_owners);
+      $scope.isLoading = false;
 
-   $scope.isLoading = false;
+      $scope.owners = loc_owners;
+      $scope.isLoading = false;
+   });
 
    $scope.order = function(predicate, reverse) {
       $scope.owners = orderBy($scope.owners, predicate, reverse);
@@ -51,9 +55,6 @@ angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$fil
    $scope.submitRankings = function() {
       console.log("push this to the DB time");
    };
-   console.dir(loc_owners);
-   $scope.owners = loc_owners;
-   $scope.isLoading = false;
 
 
    $scope.sortableOptions = {

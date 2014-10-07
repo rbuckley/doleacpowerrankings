@@ -7,8 +7,8 @@
                <th><a href="" ng-click="reverse=false;order('name', false)">Owner</a></th>
                <th>Team</th>
                <th><a href="" ng-click="reverse=!reverse;order('wins', reverse)">Record</a></th>
-               <th><a href="" ng-click="reverse=!reverse;order('pointsFor', reverse)">Points For</a></th>
-               <th><a href="" ng-click="reverse=!reverse;order('pointsAgainst', reverse)">Points Against</a></th>
+               <th><a href="" ng-click="reverse=!reverse;order('points_scored', reverse)">Points For</a></th>
+               <th><a href="" ng-click="reverse=!reverse;order('points_against', reverse)">Points Against</a></th>
             </tr>
          </thead>
          <tbody id="sortable-owners" sortable="sortableOptions" ng-model='owners'>
@@ -17,8 +17,8 @@
                <td sortable-item-handle>{{owner.name}}</td>
                <td sortable-item-handle>{{owner.team}}</td>
                <td sortable-item-handle>{{owner.wins}} - {{owner.losses}} - {{owner.ties}}</td>
-               <td sortable-item-handle>{{owner.pointsFor}}</td>
-               <td sortable-item-handle>{{owner.pointsAgainst}}</td>
+               <td sortable-item-handle>{{owner.points_scored}}</td>
+               <td sortable-item-handle>{{owner.points_against}}</td>
             </tr>
          </tbody>
       </table>
