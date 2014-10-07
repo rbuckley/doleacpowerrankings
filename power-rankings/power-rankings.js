@@ -40,11 +40,7 @@ angular.module('powerRankings').controller('PowerRankingsCtrl', ['$scope', '$fil
    $scope.owners = {};
 
    cbsAPI.getPowerRankInfo().then(function(data) {
-      loc_owners = data;
-      console.log(loc_owners);
-      $scope.isLoading = false;
-
-      $scope.owners = loc_owners;
+      $scope.owners = shuffle(data);
       $scope.isLoading = false;
    });
 
