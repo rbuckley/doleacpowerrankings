@@ -3,7 +3,7 @@
 
 angular.module('powerRankings').controller('PowerRankingsCtrl', PowerRankingsCtrl);
 
-PowerRankingsCtrl.$inject= ['$filter', '$window', 'cbsAPI', 'powerRankingData'];
+PowerRankingsCtrl.$inject= ['$filter', '$location', '$window', '$q', 'cbsAPI', 'powerRankingData'];
 
 function shuffle(array) {
    var currentIndex = array.length, temporaryValue, randomIndex ;
@@ -20,21 +20,26 @@ function shuffle(array) {
    return array;
 }
 
-function PowerRankingsCtrl($filter, $window, cbsAPI, powerRankingData) {
+function PowerRankingsCtrl($filter, $location, $window, $q, cbsAPI, powerRankingData) {
    var vm = this;
 
+   vm.period = 0;
    vm.isLoading = true;
    vm.order = order;
    vm.owners = {};
    vm.sortableOptions = {};
    vm.submitRankings = submitRankings;
+   vm.sortableOptions.containment = '#sortable-owners';
 
    cbsAPI.getPowerRankInfo().then(function(data) {
-      vm.owners = shuffle(data.owners);
-      vm.isLoading = false;
+      getRankings().then(function(result) {
+         $location.path('/powerrankingsresults');
+      }, function(reason) {
+         vm.owners = shuffle(data.owners);
+         vm.period = data.currentPeriod;
+         vm.isLoading = false;
+      });
    });
-
-   vm.sortableOptions.containment = '#sortable-owners';
 
    function order(predicate, reverse) {
       var orderBy = $filter('orderBy');
@@ -51,8 +56,24 @@ function PowerRankingsCtrl($filter, $window, cbsAPI, powerRankingData) {
       rankingModel.rank = ranking;
       rankingModel.user_id = cbsAPI.getUserId();
       rankingModel.league_id = cbsAPI.getLeagueId();
-      rankingModel.currentPer = vm.owners.currentPeriod;
+      rankingModel.currentPer = vm.period;
       powerRankingData.submitRankings(rankingModel);            
+   }
+
+   function getRankings() {
+      var deferred = $q.defer();
+      powerRankingData.getRankings(
+         {
+            league_id: cbsAPI.getLeagueId(),
+            user_id: cbsAPI.getUserId(),
+            period: vm.owners.currentPeriod
+         } 
+      ).then(function(data) {
+         deferred.resolve(data);
+      }, function(reason) {
+         deferred.reject(reason);
+      });
+      return deferred.promise;
    }
 }
 })();

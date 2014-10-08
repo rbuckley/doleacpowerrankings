@@ -130,15 +130,15 @@
 
       function _getPowerRankInfo() {
          var deferred = $q.defer();
-         var powerRankPromises = [_getOwners(), _getStandings()];
+         var powerRankPromises = [_getOwners(), _getStandings(), _getLeagueDates()];
 
          $q.all(powerRankPromises).then(function(result) {
             var owners = result[0];
             var standings = result[1];
-            //var dates = result[2];
+            var dates = result[2];
             var prData = {};
             prData.owners = [];
-            //prData.currentPeriod = dates.currentPeriod;
+            prData.currentPeriod = dates.currentPeriod;
             var divisions = standings.divisions;
             var owner, team;
             var teams = [];

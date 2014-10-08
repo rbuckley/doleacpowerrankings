@@ -1,7 +1,10 @@
 <div class="col-md-12" ng-controller="PowerRankingsCtrl as prCtrl">
-   <div ng-if='!isLoading'>
+   <div ng-if='!prCtrl.isLoading'>
       <table style="width:100%" class="pr-table table table-bordered">
          <thead>
+            <tr>
+               Power Rankings for Week {{prCtrl.period}}
+            </tr>
             <tr class='pr-header'>
                <th>Rank</th>
                <th><a href="" ng-click="reverse=false;prCtrl.order('name', false)">Owner</a></th>
