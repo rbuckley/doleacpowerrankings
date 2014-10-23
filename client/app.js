@@ -1,12 +1,15 @@
 (function() {
 'use strict';
 
-angular.module('DoleacPowerRankings', 
-   ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 'powerRankings', 'home', 'CBSSportsAPI']);
+angular.module('Doleac', 
+   ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 
+      'Doleac.powerRankings', 
+      'Doleac.home', 
+      'Doleac.cbsSportsAPI']);
 
-angular.module('DoleacPowerRankings').config(DoleacConfig);
+angular.module('Doleac').config(DoleacConfig);
 
-angular.module('DoleacPowerRankings').run(['$rootScope', 'cbsAPI', DoleacRun]);
+angular.module('Doleac').run(['$rootScope', 'cbsAPI', DoleacRun]);
 
 function DoleacConfig($stateProvider, $urlRouterProvider) {
    /* Add New States Above */

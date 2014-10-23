@@ -1,6 +1,6 @@
 describe('powerRankingData', function() {
 
-  beforeEach(module('powerRankings'));
+  beforeEach(module('Doleac.powerRankings'));
 
   it('should ...', inject(function(powerRankingData) {
 

@@ -1,6 +1,6 @@
 (function() {
    'use strict';
-   angular.module('CBSSportsAPI').factory('cbsAPI', cbsAPIFactory);
+   angular.module('Doleac.cbsSportsAPI').factory('cbsAPI', cbsAPIFactory);
 
    cbsAPIFactory.$inject = ['$resource', '$location', '$log', '$q'];
 

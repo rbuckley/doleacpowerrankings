@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('powerRankings').controller('PowerRankingsCtrl', PowerRankingsCtrl);
+angular.module('Doleac.powerRankings').controller('PowerRankingsCtrl', PowerRankingsCtrl);
 
 PowerRankingsCtrl.$inject= ['$filter', '$location', '$window', '$q', 'cbsAPI', 'powerRankingData'];
 

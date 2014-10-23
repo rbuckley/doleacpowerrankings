@@ -1,9 +1,9 @@
 (function() {
 'use strict';
 
-angular.module('CBSSportsAPI', ['ngResource', 'ui.route']);
+angular.module('Doleac.cbsSportsAPI', ['ngResource', 'ui.route']);
 
-angular.module('CBSSportsAPI').config(['$httpProvider', '$resourceProvider', cbsSportsAPIConfig]);
+angular.module('Doleac.cbsSportsAPI').config(['$httpProvider', '$resourceProvider', cbsSportsAPIConfig]);
 
 function cbsSportsAPIConfig($httpProvider, $resourceProvider) {
    $httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
