@@ -1,9 +1,9 @@
 (function() {
 'use strict';
 
-angular.module('Doleac.powerRankings', ['ui.bootstrap','ui.utils','ui.router','ngAnimate', 'ui.sortable', 'CBSSportsAPI' ]);
+angular.module('Doleac.powerRankings', ['ui.bootstrap','ui.utils','ui.router','ngAnimate', 'ui.sortable', 'Doleac.cbsSportsAPI' ]);
 
-angular.module('Doleac.powerRankings').config(powerRankingsConfig);
+angular.module('Doleac.powerRankings').config(['$stateProvider', '$locationProvider', powerRankingsConfig]);
 
 function powerRankingsConfig ($stateProvider, $locationProvider) {
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="DoleacPowerRankings">
+<html ng-app="Doleac">
 <head>
   <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,8 +30,12 @@
   <!-- Main App JS -->
   <script src="app.js"></script>
   <script src="power-rankings/power-rankings.module.js"></script>
-  <script src="power-rankings/service/powerRankingData.js"></script>
+  <script src="power-rankings/power-rankings.service.js"></script>
   <script src="power-rankings/power-rankings.js"></script>
+  <script src="team-analysis/team-analysis.module.js"></script>
+  <script src="team-analysis/team-analysis.module.js"></script>
+  <script src="uber-filter/uber-filter.module.js"></script>
+  <script src="uber-filter/uber-filter.js"></script>
   <script src="home/home.js"></script>
   <script src="cbssports-api/cbssports-api.module.js"></script>
   <script src="cbssports-api/cbssports-api.service.js"></script>
@@ -45,6 +49,8 @@
      <ul class="nav navbar-nav">
         <li><a ui-sref="about">About</a></li>
         <li><a ui-sref="power-rankings">Power Rankings</a></li>
+        <li><a ui-sref="uber-filter">Uber Filter</a></li>
+        <li><a ui-sref="team-analysis">Analyze Teams</a></li>
      </ul>
   </nav>
 

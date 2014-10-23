@@ -4,6 +4,8 @@
 angular.module('Doleac', 
    ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 
       'Doleac.powerRankings', 
+      'Doleac.teamAnalysis', 
+      'Doleac.uberFilter', 
       'Doleac.home', 
       'Doleac.cbsSportsAPI']);
 
