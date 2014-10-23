@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="DoleacPowerRankings">
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+  <link href="app.less" type="text/css" rel="stylesheet/less">
+</head>
+<body>
+
+  <!-- Livereload script for development only (stripped during dist build) -->
+  <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+
+  <!-- JS from Bower Components -->
+  <script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+  <script src="bower_components/ng-sortable/dist/ng-sortable.js"></script>
+  <!-- Add New Bower Component JS Above -->
+
+
+  <!-- Main App JS -->
+  <script src="app.js"></script>
+  <script src="power-rankings/power-rankings.module.js"></script>
+  <script src="power-rankings/service/powerRankingData.js"></script>
+  <script src="power-rankings/power-rankings.js"></script>
+  <script src="home/home.js"></script>
+  <script src="cbssports-api/cbssports-api.module.js"></script>
+  <script src="cbssports-api/cbssports-api.service.js"></script>
+  <!-- Add New Component JS Above -->
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-inverse" role="navigation">
+     <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="home">Doleac</a>
+     </div>
+     <ul class="nav navbar-nav">
+        <li><a ui-sref="about">About</a></li>
+        <li><a ui-sref="power-rankings">Power Rankings</a></li>
+     </ul>
+  </nav>
+
+
+   <div ui-view></div>
+
+</body>
+</html>

@@ -51,7 +51,10 @@ module.exports = function (grunt) {
             livereloadOnError: false,
             spawn: false
         },
-        files: [createFolderGlobs(['*.js','*.less','*.html']),'!_SpecRunner.html','!.grunt'],
+        files: ['**/*.js','**/*.less','**/*.html',
+           '!_SpecRunner.html','!.grunt',
+           '!**/bower_components/**',
+           '!**/node_modules/**'],
         tasks: [] //all the tasks are run dynamically during the watch event handler
       }
     },
@@ -60,7 +63,9 @@ module.exports = function (grunt) {
         options: {
             jshintrc: '.jshintrc'
         },
-        src: createFolderGlobs('*.js')
+        src: ['**/*.js',
+            '!**/bower_components/**',
+            '!**/node_modules/**']
       }
     },
     clean: {
@@ -86,7 +91,7 @@ module.exports = function (grunt) {
             module: pkg.name,
             htmlmin:'<%= htmlmin.main.options %>'
         },
-        src: [createFolderGlobs('*.html'),'!index.html','!_SpecRunner.html'],
+        src: ['**/*.html','!index.html','!_SpecRunner.html'],
         dest: 'temp/templates.js'
       }
     },
@@ -178,7 +183,7 @@ module.exports = function (grunt) {
         files: [  //this files data is also updated in the watch handler, if updated change there too
           '<%= dom_munger.data.appjs %>',
           'bower_components/angular-mocks/angular-mocks.js',
-          createFolderGlobs('*-spec.js')
+          '**/*-spec.js'
         ],
         logLevel:'ERROR',
         reporters:['mocha'],
