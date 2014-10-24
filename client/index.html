@@ -4,6 +4,10 @@
   <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/ng-sortable/dist/ng-sortable.css" />
+  <link rel="stylesheet" href="bower_components/ng-sortable/dist/ng-sortable.style.css" />
+  <!-- endbower -->
   <link href="app.less" type="text/css" rel="stylesheet/less">
 </head>
 <body>
@@ -12,33 +16,41 @@
   <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
 
   <!-- JS from Bower Components -->
-  <script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
+  <!-- bower:js -->
   <script src="bower_components/jquery/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
-  <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
   <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/less.js/dist/less-1.6.3.js"></script>
   <script src="bower_components/ng-sortable/dist/ng-sortable.js"></script>
+  <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+  <script src="bower_components/restangular/dist/restangular.js"></script>
+  <!-- endbower -->
   <!-- Add New Bower Component JS Above -->
 
 
   <!-- Main App JS -->
   <script src="app/app.js"></script>
-  <script src="app/power-rankings/power-rankings.module.js"></script>
-  <script src="app/power-rankings/power-rankings.service.js"></script>
-  <script src="app/power-rankings/power-rankings.js"></script>
-  <script src="app/team-analysis/team-analysis.module.js"></script>
-  <script src="app/team-analysis/team-analysis.module.js"></script>
-  <script src="app/uber-filter/uber-filter.module.js"></script>
-  <script src="app/uber-filter/uber-filter.js"></script>
-  <script src="app/home/home.js"></script>
+  <!-- injector:js -->
   <script src="app/cbssports-api/cbssports-api.module.js"></script>
   <script src="app/cbssports-api/cbssports-api.service.js"></script>
+  <script src="app/home/home.js"></script>
+  <script src="app/power-rankings/power-rankings-express.service.js"></script>
+  <script src="app/power-rankings/power-rankings-mongolab.service.js"></script>
+  <script src="app/power-rankings/power-rankings.js"></script>
+  <script src="app/power-rankings/power-rankings.module.js"></script>
+  <script src="app/team-analysis/team-analysis.js"></script>
+  <script src="app/team-analysis/team-analysis.module.js"></script>
+  <script src="app/uber-filter/uber-filter.js"></script>
+  <script src="app/uber-filter/uber-filter.module.js"></script>
+  <!-- endinjector -->
   <!-- Add New Component JS Above -->
 
   <!-- NAVIGATION -->
