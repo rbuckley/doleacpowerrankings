@@ -13,6 +13,7 @@ var uriUtil = require('mongodb-uri');
 var config = require('./config/environment');
 
 // Connect to database
+mongoose.set('debug', true);
 var mongooseUri = uriUtil.formatMongoose(config.mongo.uri);
 mongoose.connect(mongooseUri, config.mongo.options);
 var mongooseConn = mongoose.connection;
@@ -20,7 +21,6 @@ var mongooseConn = mongoose.connection;
 mongooseConn.on('error', console.error.bind(console, 'connection error:'));
 
 mongooseConn.once('open', function () {
-   console.log('mongoose opened connection');
 });
 
 // Populate DB with sample data

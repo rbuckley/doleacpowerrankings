@@ -1,11 +1,11 @@
 (function() {
 'use strict';
 
-angular.module('Doleac.powerRankings').factory('powerRankingData', powerRankingDataFactory);
+angular.module('Doleac.powerRankingsMongoLab').factory('powerRankingDataMongoLab', powerRankingDataMongoLabFactory);
 
-powerRankingDataFactory.$inject = [ '$resource', '$q' ];
+powerRankingDataMongoLabFactory.$inject = [ '$resource', '$q' ];
 
-function powerRankingDataFactory($resource, $q) {
+function powerRankingDataMongoLabFactory($resource, $q) {
 
    var mongoLabAPIKey = '3UmxkX7nCOOMUN0_nA8kUp0SOP-oDd_H';
    var mongoLabBaseURI = 'https://api.mongolab.com/api/1/databases/power_rankings/collections/:league_id';
@@ -13,12 +13,12 @@ function powerRankingDataFactory($resource, $q) {
          {apiKey: mongoLabAPIKey }
    );
 
-	var powerRankingData = {
+	var powerRankingDataMongoLab = {
       submitRankings:      _submitRankings,
       getRankings:         _getRankings
    };
 
-	return powerRankingData;
+	return powerRankingDataMongoLab;
 
    //////////////////// Function Implementation //////////////////
 

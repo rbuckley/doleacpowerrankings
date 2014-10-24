@@ -3,7 +3,7 @@
 
 angular.module('Doleac.powerRankings').controller('PowerRankingsCtrl', PowerRankingsCtrl);
 
-PowerRankingsCtrl.$inject= ['$filter', '$location', '$window', '$q', 'cbsAPI', 'powerRankingData'];
+PowerRankingsCtrl.$inject= ['$filter', '$location', '$window', '$q', 'cbsAPI', 'powerRankingExpressData'];
 
 function shuffle(array) {
    var currentIndex = array.length, temporaryValue, randomIndex ;
@@ -20,7 +20,7 @@ function shuffle(array) {
    return array;
 }
 
-function PowerRankingsCtrl($filter, $location, $window, $q, cbsAPI, powerRankingData) {
+function PowerRankingsCtrl($filter, $location, $window, $q, cbsAPI, powerRankingExpressData) {
    var vm = this;
 
    vm.period = 0;
@@ -57,12 +57,12 @@ function PowerRankingsCtrl($filter, $location, $window, $q, cbsAPI, powerRanking
       rankingModel.user_id = cbsAPI.getUserId();
       rankingModel.league_id = cbsAPI.getLeagueId();
       rankingModel.currentPer = vm.period;
-      powerRankingData.submitRankings(rankingModel);            
+      powerRankingExpressData.submitRankings(rankingModel);            
    }
 
    function getRankings() {
       var deferred = $q.defer();
-      powerRankingData.getRankings(
+      powerRankingExpressData.getRankings(
          {
             league_id: cbsAPI.getLeagueId(),
             user_id: cbsAPI.getUserId(),

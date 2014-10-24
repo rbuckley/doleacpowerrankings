@@ -57,6 +57,7 @@
        // serve up static content from client dir      
        app.use(express.static(path.join(config.root, 'client'))); 
        app.set('appPath', 'client'); 
+       
        // http request logger
        app.use(morgan('dev')); 
        // Error handler - has to be last
