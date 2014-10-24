@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('Doleac.powerRankingsExpress').factory('powerRankingExpressData', powerRankingExpressDataFactory);
+angular.module('Doleac.powerRankings').factory('powerRankingExpressData', powerRankingExpressDataFactory);
 
 powerRankingExpressDataFactory.$inject = [ '$resource', '$q' ];
 

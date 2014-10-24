@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('Doleac.powerRankingsMongoLab').factory('powerRankingDataMongoLab', powerRankingDataMongoLabFactory);
+angular.module('Doleac.powerRankings').factory('powerRankingDataMongoLab', powerRankingDataMongoLabFactory);
 
 powerRankingDataMongoLabFactory.$inject = [ '$resource', '$q' ];
 

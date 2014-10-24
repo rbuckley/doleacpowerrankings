@@ -20,10 +20,9 @@
     "angular-ui-utils": "~0.1",
     "angular-bootstrap": "~0.10",
     "moment": "~2.5",
-    "less.js": "~1.6",
+    "less.js": "2.0.0-b1",
     "font-awesome": "~4.0",
-    "ng-sortable": "~1.1.1",
-    "restangular": "~1.4.0"
+    "ng-sortable": "~1.1.1"
   },
   "devDependencies": {}
 }

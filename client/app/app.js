@@ -3,7 +3,7 @@
 
 angular.module('Doleac', 
    ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 
-      'Doleac.powerRankingsExpress', 
+      'Doleac.powerRankings', 
       'Doleac.teamAnalysis', 
       'Doleac.uberFilter', 
       'Doleac.home', 
