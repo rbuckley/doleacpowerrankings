@@ -49,7 +49,7 @@ module.exports = function (grunt) {
                'env:prod',
                'express:prod',
                'wait', 
-               'open',
+               'open:cbsServer',
                'express-keepalive'
          ]);
       }
@@ -77,7 +77,7 @@ module.exports = function (grunt) {
             'autoprefixer',
             'express:dev',
             'wait',
-            'open',
+            'open:cbsServer',
             'watch'
       ]);
    });
