@@ -18,7 +18,8 @@ var LEAGUE_PERIODS = 13;
  * @param leagueSize - size of the league, must be less than LEAGUE_SIZE_MAX
  * @param leagueParticipation - number from 0 - 100 representing a percentage of how many
  *                              owners submit rankings
- * @return {league} - a JSON object ready to be inserted into the db
+ * @return {league.league} - a JSON object ready to be inserted into the db
+ * @return {league.owners} - an array of all the owner ids in the league
  */
 function populateDB(curPeriod, leagueSize, leagueParticipation) {
    /* assertions for valid params */
@@ -61,8 +62,7 @@ function populateDB(curPeriod, leagueSize, leagueParticipation) {
         league.periods[i].owners[j].ranking = shuffle(leagueOwners.slice(0));
       }
    }
-   //console.log(JSON.stringify(league, null, 3));
-   return league;
+   return {'league': league, 'owners':leagueOwners};
 }
 
 /**
@@ -81,6 +81,8 @@ function createLeague(leagueSize) {
 }
 
 /** populate a league of 12 teams with 100% participation and in week 6*/
-populateDB(6, 12, 90);
+var league = populateDB(6, 12, 90);
+console.log(league.owners);
+console.log(JSON.stringify(league.league, null, 3));
 module.exports = populateDB;
 
