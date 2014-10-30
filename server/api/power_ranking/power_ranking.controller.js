@@ -5,11 +5,8 @@ var PowerRanking = require('./power_ranking.model');
 
 // Get list of power_rankings
 exports.index = function(req, res) {
-   console.log('getting');
    PowerRanking.find(function (err, power_rankings) {
-      console.log(power_rankings);
       if(err) { 
-         console.log(err);
          return handleError(res, err); 
       }
       return res.status(200, power_rankings);

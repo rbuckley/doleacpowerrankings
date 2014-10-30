@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /**
- * Scheme to describe an owner in the power ranking context
+ * Schema to describe an owner in the power ranking context
  * contains the id of the owner, and an array of owner_ids which represents a ranking 
  * submitted by the owner with id
  */

@@ -15,6 +15,7 @@ module.exports = {
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
           '!{.tmp,<%= yeoman.client %>}/app/app.js',
           '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
+          '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mongolab.js', // ignore the service that uses the mongo lab rest api
           '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'
         ]
       ]

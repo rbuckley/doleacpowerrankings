@@ -22,7 +22,7 @@ module.exports = function(config) {
          'client/app/**/*.spec.js'
       ],
 
-      hostname: '4248-h2h.football.cbssports.com',
+      //hostname: '4248-h2h.football.cbssports.com',
       // list of files to exclude
       exclude: [
       ],

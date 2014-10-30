@@ -23,6 +23,7 @@ function shuffle(array) {
 function PowerRankingsCtrl($filter, $location, $window, $q, cbsAPI, powerRankingExpressData) {
    var vm = this;
 
+   console.log('controlling th epower');
    vm.period = 0;
    vm.isLoading = true;
    vm.order = order;
@@ -60,6 +61,12 @@ function PowerRankingsCtrl($filter, $location, $window, $q, cbsAPI, powerRanking
       powerRankingExpressData.submitRankings(rankingModel);            
    }
 
+
+   /**
+    * getRankings
+    * currently not working with express framework
+    * @return {undefined}
+    */
    function getRankings() {
       var deferred = $q.defer();
       powerRankingExpressData.getRankings(

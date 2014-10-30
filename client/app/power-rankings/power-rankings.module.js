@@ -9,7 +9,8 @@ function powerRankingsConfig ($stateProvider, $locationProvider) {
 
    $stateProvider.state('power-rankings', {
       url: '/powerrankings',
-      templateUrl: 'app/power-rankings/partial/power-rankings.html'
+      templateUrl: 'app/power-rankings/partial/power-rankings.html',
+      controller: 'PowerRankingsCtrl as prCtrl'
    });
    $stateProvider.state('power-rankings-results', {
       url: '/powerrankingsresults',
