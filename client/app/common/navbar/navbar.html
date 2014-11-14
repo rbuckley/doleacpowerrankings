@@ -1,0 +1,11 @@
+<nav class="navbar navbar-inverse" role="navigation" ng-controller="NavbarCtrl">
+  <div class="navbar-header">
+     <a class="navbar-brand" ui-sref="home">Doleac</a>
+  </div>
+  <ul class="nav navbar-nav">
+     <li ng-class="{ active: isActive('/about')}"><a ui-sref="about">About</a></li>
+     <li ng-class="{ active: isActive('/powerrankings')}"><a ui-sref="power-rankings">Power Rankings</a></li>
+     <li ng-class="{ active: isActive('/uberfilter')}"><a ui-sref="uber-filter">Uber Filter</a></li>
+     <li ng-class="{ active: isActive('/teamanalysis')}"><a ui-sref="team-analysis">Analyze Teams</a></li>
+  </ul>
+</nav>

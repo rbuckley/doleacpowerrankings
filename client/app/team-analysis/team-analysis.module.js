@@ -9,7 +9,7 @@ function teamAnalysisConfig ($stateProvider, $locationProvider) {
 
    $stateProvider.state('team-analysis', {
       url: '/teamanalysis',
-      templateUrl: 'app/team-analysis/team-analysis.html'
+      templateUrl: 'app/team-analysis/team-analysis.html',
    });
    /* Add New States Above */
 }

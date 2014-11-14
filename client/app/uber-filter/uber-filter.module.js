@@ -9,7 +9,7 @@ function uberFilterConfig ($stateProvider, $locationProvider) {
 
    $stateProvider.state('uber-filter', {
       url: '/uberfilter',
-      templateUrl: 'app/uber-filter/uber-filter.html'
+      templateUrl: 'app/uber-filter/uber-filter.html',
    });
    /* Add New States Above */
 }

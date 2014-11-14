@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
   <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/ng-sortable/dist/ng-sortable.css" />
-  <link rel="stylesheet" href="bower_components/ng-sortable/dist/ng-sortable.style.css" />
   <!-- endbower -->
   <link href="app/app.less" type="text/css" rel="stylesheet/less">
 </head>
@@ -29,7 +27,8 @@
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/less.js/dist/less.js"></script>
-  <script src="bower_components/ng-sortable/dist/ng-sortable.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+  <script src="bower_components/angular-ui-sortable/sortable.js"></script>
   <!-- endbower -->
   <!-- Add New Bower Component JS Above -->
 
@@ -38,10 +37,12 @@
   <script src="app/app.js"></script>
   <!-- injector:js -->
   <script src="app/cbssports-api/cbssports-api.module.js"></script>
+  <script src="app/common/navbar/navbar.module.js"></script>
   <script src="app/power-rankings/power-rankings.module.js"></script>
   <script src="app/team-analysis/team-analysis.module.js"></script>
   <script src="app/uber-filter/uber-filter.module.js"></script>
   <script src="app/cbssports-api/cbssports-api.service.js"></script>
+  <script src="app/common/navbar/navbar.js"></script>
   <script src="app/home/home.js"></script>
   <script src="app/power-rankings/power-rankings-express.service.js"></script>
   <script src="app/power-rankings/power-rankings-mongolab.service.js"></script>
@@ -50,19 +51,6 @@
   <script src="app/uber-filter/uber-filter.js"></script>
   <!-- endinjector -->
   <!-- Add New Component JS Above -->
-
-  <!-- NAVIGATION -->
-  <nav class="navbar navbar-inverse" role="navigation">
-     <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="home">Doleac</a>
-     </div>
-     <ul class="nav navbar-nav">
-        <li><a ui-sref="about">About</a></li>
-        <li><a ui-sref="power-rankings">Power Rankings</a></li>
-        <li><a ui-sref="uber-filter">Uber Filter</a></li>
-        <li><a ui-sref="team-analysis">Analyze Teams</a></li>
-     </ul>
-  </nav>
 
    <div ui-view></div>
 

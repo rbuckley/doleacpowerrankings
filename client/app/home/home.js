@@ -11,7 +11,7 @@ function homeConfig($stateProvider) {
 
     $stateProvider.state('home', {
         url: '/home',
-        templateUrl: 'app/home/home.html'
+        templateUrl: 'app/home/home.html',
     });
     /* Add New States Above */
 }

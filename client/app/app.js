@@ -3,6 +3,7 @@
 
 angular.module('Doleac', 
    ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 
+      'Common.navbar',
       'Doleac.powerRankings', 
       'Doleac.teamAnalysis', 
       'Doleac.uberFilter', 
@@ -15,7 +16,7 @@ angular.module('Doleac').run(['$rootScope', 'cbsAPI', DoleacRun]);
 
 function DoleacConfig($stateProvider, $urlRouterProvider) {
    /* Add New States Above */
-   $urlRouterProvider.otherwise('/');
+   $urlRouterProvider.otherwise('/home');
 }
 
 function DoleacRun($rootScope, cbsAPI) {

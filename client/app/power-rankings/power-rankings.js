@@ -23,24 +23,33 @@ function shuffle(array) {
 function PowerRankingsCtrl($filter, $location, $window, $q, cbsAPI, powerRankingExpressData) {
    var vm = this;
 
-   console.log('controlling th epower');
    vm.period = 0;
    vm.isLoading = true;
    vm.order = order;
-   vm.owners = {};
-   vm.sortableOptions = {};
+   vm.owners = [];
    vm.submitRankings = submitRankings;
-   vm.sortableOptions.containment = '#sortable-owners';
+   vm.sortableOptions = {
+      'containment': '.sort-containment',
+      'helper': fixedWidthHelper,
+   };
+
 
    cbsAPI.getPowerRankInfo().then(function(data) {
-      getRankings().then(function(result) {
-         $location.path('/powerrankingsresults');
-      }, function(reason) {
+//      getRankings().then(function(result) {
+//         $location.path('/powerrankingsresults');
+//      }, function(reason) {
          vm.owners = shuffle(data.owners);
          vm.period = data.currentPeriod;
          vm.isLoading = false;
-      });
+//      });
    });
+
+   function fixedWidthHelper(e, ui) {
+      ui.children().each(function() {
+         $(this).width($(this).width());
+      });
+      return ui;
+   }
 
    function order(predicate, reverse) {
       var orderBy = $filter('orderBy');
