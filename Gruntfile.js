@@ -10,17 +10,21 @@ module.exports = function (grunt) {
    }
 
    require('load-grunt-config')(grunt, {
-         jitGrunt: {
-            staticMappings: {
-               express: 'grunt-express-server',
-               useminPrepare: 'grunt-usemin',
-               ngtemplates: 'grunt-angular-templates',
-               cdnify: 'grunt-google-cdn',
-               protractor: 'grunt-protractor-runner',
-               injector: 'grunt-asset-injector',
-               buildcontrol: 'grunt-build-control'
-            }
+      jitGrunt: {
+         staticMappings: {
+            express: 'grunt-express-server',
+            useminPrepare: 'grunt-usemin',
+            ngtemplates: 'grunt-angular-templates',
+            cdnify: 'grunt-google-cdn',
+            protractor: 'grunt-protractor-runner',
+            injector: 'grunt-asset-injector',
+            buildcontrol: 'grunt-build-control'
          }
+      },
+      cbs_data: {
+         user_id: grunt.option('user_id'),
+         league_id: grunt.option('league_id'),
+      }
    });
    // Time how long tasks take. Can help when optimizing build times
    require('time-grunt')(grunt);
