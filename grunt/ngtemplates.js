@@ -14,12 +14,12 @@ module.exports = {
   },
   main: {
     cwd: '<%= yeoman.client %>',
-    src: ['{app,common}/**/*.html'],
+    src: ['{app,components}/**/*.html'],
     dest: '.tmp/templates.js'
   },
   tmp: {
     cwd: '.tmp',
-    src: ['{app,common}/**/*.html'],
+    src: ['{app,components}/**/*.html'],
     dest: '.tmp/tmp-templates.js'
   }
 };
