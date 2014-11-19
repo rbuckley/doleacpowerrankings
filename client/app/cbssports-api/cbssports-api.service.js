@@ -152,8 +152,8 @@
                         prData.owners[owner].wins = teams[team].wins;
                         prData.owners[owner].losses = teams[team].losses;
                         prData.owners[owner].ties = teams[team].ties;
-                        prData.owners[owner].pointsScored = teams[team].points_scored;
-                        prData.owners[owner].pointsAgainst = teams[team].points_against;
+                        prData.owners[owner].pointsScored = parseInt(teams[team].points_scored);
+                        prData.owners[owner].pointsAgainst = parseInt(teams[team].points_against);
                      }
                   }
                }
@@ -169,8 +169,8 @@
                               prData.owners[owner].wins = teams[team].wins;
                               prData.owners[owner].losses = teams[team].losses;
                               prData.owners[owner].ties = teams[team].ties;
-                              prData.owners[owner].pointsScored = teams[team].points_scored;
-                              prData.owners[owner].pointsAgainst = teams[team].points_against;
+                              prData.owners[owner].pointsScored = parseInt(teams[team].points_scored);
+                              prData.owners[owner].pointsAgainst = parseInt(teams[team].points_against);
                            }
                         }
                      }
