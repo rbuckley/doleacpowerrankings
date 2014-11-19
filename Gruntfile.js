@@ -21,10 +21,6 @@ module.exports = function (grunt) {
             buildcontrol: 'grunt-build-control'
          }
       },
-      cbs_data: {
-         user_id: grunt.option('user_id'),
-         league_id: grunt.option('league_id'),
-      }
    });
    // Time how long tasks take. Can help when optimizing build times
    require('time-grunt')(grunt);
