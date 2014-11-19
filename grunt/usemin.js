@@ -3,7 +3,8 @@ module.exports = {
   css: ['<%= yeoman.dist %>/public/{,*/}*.css'],
   js: ['<%= yeoman.dist %>/public/{,*/}*.js'],
   options: {
-    assetsDirs: ['<%= yeoman.dist %>/public',
+    assetsDirs: [
+      '<%= yeoman.dist %>/public',
       '<%= yeoman.dist %>/public/assets/images'
     ],
     patterns: {

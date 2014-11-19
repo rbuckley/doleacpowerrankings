@@ -10,6 +10,7 @@ module.exports = {
         'bower_components/**/*',
         'assets/images/{,*/}*.{webp}',
         'assets/fonts/**/*',
+        '!**/less.js/**',
         'index.html'
       ]
     }, {

@@ -4,19 +4,30 @@
   <title></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
-  <!-- bower:css -->
-  <!-- endbower -->
-  <link href="app/app.less" type="text/css" rel="stylesheet/less">
+   <!-- build:css(client) app/vendor.css -->
+   <!-- bower:css -->
+   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+   <!-- endbower -->
+   <!-- endbuild -->
+   <!-- build:css({.tmp,client}) app/app.css -->
+   <!-- endbuild -->
+   <!-- build:ignore -->
+   <link href="app/app.less" type="text/css" rel="stylesheet/less">
+   <!-- endbuild -->
 </head>
 <body>
 
+  <!-- build:ignore -->
   <!-- Livereload script for development only (stripped during dist build) -->
-  <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+  <script src="http://localhost:35729/livereload.js"></script>
+   <!-- endbuild -->
 
   <!-- JS from Bower Components -->
+  <!-- build:js({client,node_modules}) app/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -26,14 +37,19 @@
   <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/moment/moment.js"></script>
-  <script src="bower_components/less.js/dist/less.js"></script>
   <script src="bower_components/jquery-ui/jquery-ui.js"></script>
   <script src="bower_components/angular-ui-sortable/sortable.js"></script>
   <!-- endbower -->
+  <!-- endbuild -->
+  
+  <!-- build:ignore -->
+  <script src-"bower_components/less.js/dist/less.js"></script>
+  <!-- endbuild -->
   <!-- Add New Bower Component JS Above -->
 
 
   <!-- Main App JS -->
+  <!-- build:js({.tmp,client}) app/app.js -->
   <script src="app/app.js"></script>
   <!-- injector:js -->
   <script src="app/cbssports-api/cbssports-api.module.js"></script>
@@ -50,6 +66,7 @@
   <script src="app/team-analysis/team-analysis.js"></script>
   <script src="app/uber-filter/uber-filter.js"></script>
   <!-- endinjector -->
+  <!-- endbuild -->
   <!-- Add New Component JS Above -->
 
    <div ui-view></div>

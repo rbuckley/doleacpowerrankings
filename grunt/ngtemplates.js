@@ -1,6 +1,6 @@
 module.exports = {
   options: {
-    module: 'doleacPowerRankingsApp',
+    module: 'Doleac',
     htmlmin: {
       collapseBooleanAttributes: true,
       collapseWhitespace: true,
@@ -14,12 +14,12 @@ module.exports = {
   },
   main: {
     cwd: '<%= yeoman.client %>',
-    src: ['{app,components}/**/*.html'],
+    src: ['{app,common}/**/*.html'],
     dest: '.tmp/templates.js'
   },
   tmp: {
     cwd: '.tmp',
-    src: ['{app,components}/**/*.html'],
+    src: ['{app,common}/**/*.html'],
     dest: '.tmp/tmp-templates.js'
   }
 };

@@ -23,9 +23,6 @@ mongooseConn.on('error', console.error.bind(console, 'connection error:'));
 mongooseConn.once('open', function () {
 });
 
-// Populate DB with sample data
-if(config.seedDB) { require('./config/seed'); }
-
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
