@@ -7,4 +7,3 @@ tmp
 .DS_Store
 .idea
 dist/
-token.json
