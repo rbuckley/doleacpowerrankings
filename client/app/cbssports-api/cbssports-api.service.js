@@ -5,6 +5,7 @@
    cbsAPIFactory.$inject = ['$resource', '$location', '$log', '$q'];
 
    function parseCBSSportsURL(url) {
+      console.log('trying to parse url '+ url);
       var tokens = [];
       var queries = url.split('?');
       if (queries[1]) {
@@ -75,6 +76,8 @@
                leagueInfo.dates = {};
                leagueInfo.dates.currentPeriod = dates.current_period;
                deferred.resolve(leagueInfo.dates);
+            }, function(error) {
+               console.log(error);
             });
          }
          return deferred.promise;
@@ -97,10 +100,17 @@
          return deferred.promise;
       }
 
+      /**
+       * _getOwners
+       *
+       * @name _getOwners
+       * @function
+       * @return {promise} Returns an array of league owners if resolved
+       */
       function _getOwners(){
          var deferred = $q.defer();
-
-         _get('league/owners').get().$promise.then(function(data) {
+         var resource = _get('league/owners');
+         resource.get().$promise.then(function(data) {
             var leagueOwners = [];
             var i = 0;
             var owners = data.body.owners;
@@ -116,7 +126,12 @@
                }
             }
             deferred.resolve(leagueOwners);
+         }, function(error) {
+            console.log(error);
+         }, function(notify) {
+            console.log(notify);
          });
+         
          return deferred.promise;
       }
 

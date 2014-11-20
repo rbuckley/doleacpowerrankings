@@ -3,9 +3,9 @@
 
 angular.module('Doleac.powerRankings', ['ui.sortable', 'Doleac.cbsSportsAPI' ]);
 
-angular.module('Doleac.powerRankings').config(['$stateProvider', '$locationProvider', powerRankingsConfig]);
+angular.module('Doleac.powerRankings').config(['$stateProvider', powerRankingsConfig]);
 
-function powerRankingsConfig ($stateProvider, $locationProvider) {
+function powerRankingsConfig ($stateProvider) {
 
    $stateProvider.state('power-rankings', {
       url: '/powerrankings',

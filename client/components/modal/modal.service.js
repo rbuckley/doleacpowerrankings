@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('doleacpowerrankingsOldApp')
+angular.module('Doleac')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal

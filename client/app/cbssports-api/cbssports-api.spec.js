@@ -7,13 +7,22 @@ describe('cbs API service', function() {
       cbsAPI = _cbsAPI_;
    }));
 
-   it('should be able to get the relevant info from the url', function() {
-      expect(true).to.be.true;
+   it('test the tests', function() {
+      cbsAPI.test().should.equal('hello api');
    });
 
+   it('should be able to get the relevant info from the url', function() {
+      var user_id = cbsAPI.getUserId();
+      user_id.should.not.be.null; 
+      cbsAPI.getLeagueId().should.not.be.null; 
+   });
+
+
    describe('owners', function() {
-      it('should have a getOwners function', function() {
-         expect(angular.isFunction(cbsAPI.getOwners)).to.be.true;
+
+      it('should be able to get a list of owners', function(done) {
+         var promise = cbsAPI.getOwners();
+         promise.should.be.fulfilled.and.notify(done);
       });
    });
 

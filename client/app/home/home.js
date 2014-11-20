@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 
-angular.module('Doleac.home', ['ui.bootstrap','ui.utils','ui.router','ngAnimate']);
+angular.module('Doleac.home', ['ui.router']);
 
 angular.module('Doleac.home').config(homeConfig);
 
