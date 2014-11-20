@@ -22,7 +22,7 @@
    function cbsAPIFactory($resource, $location, $log, $q) {
       var apiVers = '3.0';
       var basePath = 'http://api.cbssports.com/fantasy/';
-
+      
       var cbssportsTokens = parseCBSSportsURL($location.absUrl());
 
       var leagueInfo = {};

@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('Doleac', 
-   ['ui.bootstrap', 'ui.utils', 'ui.router', 'ngAnimate', 
+   ['ui.router', 
       'Common.navbar',
       'Doleac.powerRankings', 
       'Doleac.teamAnalysis', 
@@ -14,7 +14,7 @@ angular.module('Doleac').config(DoleacConfig);
 
 angular.module('Doleac').run(['$rootScope', 'cbsAPI', DoleacRun]);
 
-function DoleacConfig($stateProvider, $urlRouterProvider) {
+function DoleacConfig($urlRouterProvider) {
    /* Add New States Above */
    $urlRouterProvider.otherwise('/home');
 }
