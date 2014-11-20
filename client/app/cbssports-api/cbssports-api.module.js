@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('Doleac.cbsSportsAPI', ['ngResource', 'ui.route']);
+angular.module('Doleac.cbsSportsAPI', ['ngResource', 'ui.router']);
 
 angular.module('Doleac.cbsSportsAPI').config(['$httpProvider', '$resourceProvider', cbsSportsAPIConfig]);
 
