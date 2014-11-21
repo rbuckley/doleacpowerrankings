@@ -80,9 +80,5 @@ function createLeague(leagueSize) {
    return leagueOwners;
 }
 
-/** populate a league of 12 teams with 100% participation and in week 6*/
-var league = populateDB(6, 12, 90);
-console.log(league.owners);
-console.log(JSON.stringify(league.league, null, 3));
-module.exports = populateDB;
+exports.populateDB = populateDB;
 

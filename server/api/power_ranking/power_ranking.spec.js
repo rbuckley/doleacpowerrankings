@@ -5,7 +5,7 @@ var should = require('chai').should();
 var app = require('../../app');
 var request = require('supertest');
 var powerRanking = require('./power_ranking.model');
-var helper = require('../test');
+var helper = require('../../test');
 
 describe('GET /api/power_rankings', function() {
 

@@ -17,7 +17,6 @@ describe('cbs API service', function() {
       cbsAPI.getLeagueId().should.not.be.null; 
    });
 
-
    describe('owners', function() {
 
       it('should be able to get a list of owners', function(done) {
@@ -25,5 +24,4 @@ describe('cbs API service', function() {
          promise.should.be.fulfilled.and.notify(done);
       });
    });
-
 });

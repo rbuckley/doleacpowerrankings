@@ -87,7 +87,7 @@ module.exports = function (grunt) {
       grunt.task.run(['serve']);
    });
 
-   grunt.registerTask('test', function(target) {
+   grunt.registerTask('testServer', function(target) {
       if (target === 'server') {
          return grunt.task.run([
                'env:all',
@@ -95,8 +95,11 @@ module.exports = function (grunt) {
                'mochaTest'
          ]);
       }
+   });
 
-      else if (target === 'client') {
+
+   grunt.registerTask('testClient', function(target) {
+      if (target === 'unit') {
          return grunt.task.run([
                'clean:server',
                'env:all',
@@ -104,11 +107,23 @@ module.exports = function (grunt) {
                'concurrent:test',
                'injector',
                'autoprefixer',
-               'karma'
+               'karma:unit'
          ]);
       }
+      else if (target === 'midway') {
+         return grunt.task.run([
+               'clean:server',
+               'env:all',
+               'injector:less', 
+               'concurrent:test',
+               'injector',
+               'autoprefixer',
+               'karma:midway'
+         ]);
+      }
+   });
 
-      else if (target === 'e2e') {
+   grunt.registerTask('teste2e', function() {
          return grunt.task.run([
                'clean:server',
                'env:all',
@@ -121,12 +136,6 @@ module.exports = function (grunt) {
                'express:dev',
                'protractor'
          ]);
-      }
-
-      else grunt.task.run([
-            'test:server',
-            'test:client'
-      ]);
    });
 
    grunt.registerTask('build', [

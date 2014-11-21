@@ -22,7 +22,7 @@
    function cbsAPIFactory($resource, $location, $log, $q) {
       var apiVers = '3.0';
       var basePath = 'http://api.cbssports.com/fantasy/';
-      
+
       var cbssportsTokens = parseCBSSportsURL($location.absUrl());
 
       var leagueInfo = {};
@@ -47,16 +47,29 @@
       }
 
       function _getUserId() {
+         if (!cbssportsTokens.user_id) {
+            parseCBSSportsURL($location.absUrl());
+         }
          return cbssportsTokens.user_id;
       }
 
       function _getLeagueId() {
+         if (!cbssportsTokens.league_id) {
+            parseCBSSportsURL($location.absUrl());
+         }
          return cbssportsTokens.league_id;
+      }
+
+      function _getAccessToken() {
+         if (!cbssportsTokens.access_token) {
+            parseCBSSportsURL($location.absUrl());
+         }
+         return cbssportsTokens.access_token;
       }
 
       function _get(url) {
          return $resource(basePath + url, {
-               access_token: cbssportsTokens['access_token'],
+               access_token: _getAccessToken(),
                response_format: 'JSON',
                callback: 'JSON_CALLBACK'
          }, {
@@ -77,7 +90,7 @@
                leagueInfo.dates.currentPeriod = dates.current_period;
                deferred.resolve(leagueInfo.dates);
             }, function(error) {
-               console.log(error);
+               deferred.reject(error);
             });
          }
          return deferred.promise;

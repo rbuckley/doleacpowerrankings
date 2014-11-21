@@ -5,7 +5,7 @@ module.exports = function(config) {
    config.set({
 
       // base path that will be used to resolve all patterns (eg. files, exclude)
-      basePath: '',
+      basePath: '..',
 
 
       // frameworks to use
@@ -15,16 +15,20 @@ module.exports = function(config) {
 
       // list of files / patterns to load in the browser
       files: [
-         'client/bower_components/angular/angular.js',
-         'client/bower_components/angular-mocks/angular-mocks.js',
-         'client/bower_components/angular-resource/angular-resource.js',
-         'client/bower_components/angular-ui-router/release/angular-ui-router.js',
-         'client/app/**/*.module.js',
-         'client/app/**/*.js',
-         'client/app/**/*.spec.js'
+         // 3rd party code
+         'bower_components/angular/angular.js',
+         'bower_components/angular-mocks/angular-mocks.js',
+         'bower_components/angular-resource/angular-resource.js',
+         'bower_components/angular-ui-router/release/angular-ui-router.js',
+
+         // app specific code
+         'app/**/*.module.js',
+         'app/**/*.js',
+
+         // test specific code
+         'app/**/*.spec.js'
       ],
 
-      //hostname: '4248-h2h.football.cbssports.com',
       // list of files to exclude
       exclude: [
       ],
